@@ -1,0 +1,121 @@
+Si vuole realizzare un sistema software per la gestione di una flotta di veicoli autonomi impiegati per la consegna automatizzata di pacchi in ambito urbano. L’intera area metropolitana è suddivisa in diverse zone logistiche (es. “Centro Storico”, “Zona Industriale”, “Periferia Nord”), ciascuna delle quali contiene uno o più punti di consegna registrati presso il sistema.
+
+Il sistema gestisce unità chiamate carichi, che rappresentano singoli pacchi da consegnare. Ogni carico è identificato da un codice univoco e descritto da:
+(i) un peso in kg,
+(ii) una tipologia (standard, refrigerato, fragile),
+(iii) un punto di destinazione in una zona logistica,
+(iv) una priorità da 1 (bassa) a 5 (alta).
+
+Un insieme di uno o più carichi compatibili può essere assegnato a un veicolo per costituire una missione di consegna. Una missione ha come obiettivo la consegna fisica dei carichi assegnati al punto di destinazione.
+
+Ogni veicolo autonomo è identificato da un codice alfanumerico univoco e caratterizzato da:
+(i) una capacità massima in kg,
+(ii) uno stato operativo (disponibile, in viaggio, in manutenzione),
+(iii) una lista dei carichi assegnati e in attesa di consegna.
+
+Il sistema deve supportare le seguenti funzionalità principali:
+	•	Registrazione di un nuovo carico da consegnare a un punto logistico specifico, con indicazione di peso, tipologia e priorità.
+	•	Gestione delle code di carico presso i centri di smistamento, dove i veicoli attendono l’assegnazione della missione di consegna.
+	•	Assegnazione automatica delle missioni di consegna ai veicoli disponibili, rispettando i vincoli di capacità e compatibilità.
+	•	Simulazione del percorso più breve tra zone logistiche.
+	•	Registrazione dell’esito di una missione, specificando se i carichi sono stati consegnati correttamente o se si sono verificati problemi (es. ritardo, fallimento).
+
+Il sistema mantiene inoltre uno storico delle missioni completate, dal quale è possibile ricavare:
+(i) statistiche aggregate per zona logistica,
+(ii) carico medio gestito da ciascun veicolo,
+(iii) tempi medi di consegna per ciascuna tipologia di carico.
+
+⸻
+
+Esercizio 1 (in aula)
+
+Scegliere una o più strutture dati per modellare il contesto descritto. Si deve fare in modo che sia possibile rappresentare correttamente tutti gli elementi del sistema. Inoltre, descrivere dettagliatamente come si vogliono utilizzare le strutture dati scelte, anche attraverso almeno un esempio concreto per ogni aspetto considerato (carichi, veicoli, missioni, rete stradale, ecc.).
+
+Scenario:
+
+La città è suddivisa nelle seguenti zone logistiche:
+
+Centro Storico
+	•	Punto “Farmacia Centrale” – priorità: 4, orario: 9:00–10:00, tipo: fragile
+	•	Punto “Hotel Roma” – priorità: 3, orario: 10:00–11:00, tipo: standard
+
+Zona Industriale
+	•	Punto “Magazzino Tech” – priorità: 2, orario: 11:00–12:00, tipo: refrigerato
+
+Periferia Nord
+	•	Punto “Villa Verde” – priorità: 5, orario: 8:30–9:30, tipo: standard
+	•	Punto “Supermercato Sigma” – priorità: 1, orario: 10:30–12:00, tipo: refrigerato
+
+⸻
+
+Veicoli attivi:
+	•	VCL-101 – capacità: 100 kg, stato: disponibile
+	•	VCL-202 – capacità: 150 kg, stato: in viaggio, carichi: [“Villa Verde”]
+	•	VCL-303 – capacità: 80 kg, stato: disponibile, carichi: [“Farmacia Centrale”]
+
+⸻
+
+Rete stradale:
+	•	Centro Storico → Zona Industriale: 15 min
+	•	Zona Industriale → Periferia Nord: 20 min
+	•	Centro Storico → Periferia Nord: 25 min
+
+⸻
+
+Descrivere come vengono gestiti:
+(i) i carichi e le code di carico,
+(ii) l’assegnazione delle missioni,
+(iii) lo stato e le informazioni dei veicoli,
+(iv) la rete stradale e la ricerca del percorso più breve,
+(v) lo storico e le statistiche delle missioni concluse.
+
+⸻
+
+Esercizio 2 (in aula)
+
+Scrivere un header file in C (.h) contenente il prototipo di un ADT DeliveryManager che permetta di svolgere le operazioni elencate di seguito. Per ogni funzione dichiarata, documentare nel dettaglio come utilizzarla, descrivendo sia i parametri formali che i valori di ritorno.
+
+Funzioni:
+	•	F0. Creare un nuovo gestore della rete logistica
+	•	F1. Aggiungere una nuova zona logistica e i relativi punti di consegna
+	•	F2. Registrare un nuovo veicolo nella flotta
+	•	F3. Inserire un nuovo carico da consegnare
+	•	F4. Mettere un veicolo in coda per il carico
+	•	F5. Assegnare automaticamente una missione a un veicolo disponibile
+	•	F6. Registrare l’esito di una missione di consegna
+	•	F7. Calcolare e restituire statistiche su:
+(i) tempi medi di consegna per tipologia,
+(ii) carico medio per veicolo,
+(iii) numero di consegne per zona logistica
+	•	F8. Definire autonomamente (descrivendola dettagliatamente in un commento al codice) una funzionalità personalizzata non presente tra le precedenti
+
+⸻
+
+Esercizio 3 (a casa)
+
+Implementare in C le funzioni dell’ADT definite nell’esercizio 2, utilizzando le strutture dati ritenute più opportune per modellare i concetti descritti. È possibile:
+	•	Riutilizzare le implementazioni degli ADT sviluppati durante il corso
+	•	Migliorare le implementazioni degli ADT, motivando la scelta nel codice e nei commenti
+	•	Aggiungere nuove funzioni di supporto ove necessario, a patto che non si alteri il comportamento concettuale di base
+
+⸻
+
+Esercizio 4 (a casa)
+
+Scrivere un programma in linguaggio C che utilizza l’ADT DeliveryManager per simulare una rete urbana di consegne autonome. Il programma deve fornire un menu testuale che consenta all’utente di eseguire le seguenti operazioni:
+	•	Registrare un nuovo veicolo
+L’utente inserisce un codice identificativo e specifica la capacità. Il sistema verifica e aggiunge il veicolo se il codice è nuovo.
+	•	Visualizzare le zone logistiche e i relativi punti di consegna
+Mostra i punti per ciascuna zona, con nome, priorità, tipo, orario.
+	•	Inserire un nuovo carico da spedire
+L’utente specifica codice, punto di consegna, peso, tipologia, priorità. Il sistema valida e registra.
+	•	Accodare un veicolo al centro di smistamento
+L’utente specifica il codice. Se disponibile, viene messo in coda per l’assegnazione.
+	•	Assegnare e avviare una missione
+Il sistema seleziona un veicolo disponibile e gli assegna uno o più carichi compatibili, mostrando i dettagli della missione. Se non ci sono veicoli disponibili, mostra un messaggio.
+	•	Registrare l’esito di una missione
+L’utente inserisce il codice del veicolo, lo stato dell’esito (successo, fallimento) e una nota testuale. Il sistema aggiorna lo stato e rimuove i carichi.
+	•	Visualizzare statistiche aggiornate
+Mostra statistiche aggregate su tempi medi, carico medio, numero consegne per zona.
+	•	Eseguire la funzionalità personalizzata definita in F8
+Richiama una funzione definita liberamente dallo studente (es. filtro storico per veicolo, emergenze, suggerimenti, ecc.).
