@@ -9,7 +9,7 @@ struct ZonaLogistica{
 
 struct PuntoConsegna{
     id -> viene creato al momento della creazione(identificativo di tipo intero)
-    ZonaLogistica -> puntatore al nodo del grafo della zona logistica
+    ZonaLogistica -> puntatore alla zona logistica
     priorità -> intero per cui si associa ad ogni numero una priorità maggiore è il numero e maggiore è la priorità
     orario -> intero (es. 0830 -> 8:30....)
     tipo -> intero associo ad ogni numero una tipologia
