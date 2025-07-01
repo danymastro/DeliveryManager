@@ -8,11 +8,11 @@
 // Struttura interna del DeliveryManager
 struct DeliveryManager {
     weighted_direct_graph area_metropolitana;
-    dynamic_array missioni;        // Array di Missione
-    dynamic_array carichi;         // Array di Carico
-    dynamic_array veicoli;         // Array di Veicolo
-    dynamic_array zone_logistiche; // Array di ZonaLogistica
-    dynamic_array centri_smistamento; // Array di CentroSmistamento
+    dynamic_array missioni;      
+    dynamic_array carichi;        
+    dynamic_array veicoli;         
+    dynamic_array zone_logistiche; 
+    dynamic_array centri_smistamento; 
     int next_carico_id;
     int next_missione_id;
 };

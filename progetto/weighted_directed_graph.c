@@ -21,9 +21,9 @@
 #define INFINITY_DISTANCE INT_MAX
 
 struct _weighted_direct_graph_node {
-    int id;             // Identificativo del nodo
-    int value;          // Valore associato al nodo
-    void* data;         // Dati aggiuntivi associati al nodo
+    int id;            
+    int value;        
+    void* data;        
 };
 
 struct _weighted_direct_graph {

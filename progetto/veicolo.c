@@ -3,10 +3,10 @@
 #include <string.h>
 
 struct Veicolo {
-    char* targa;                // Targa del veicolo
-    int capacita;               // Capacità massima del veicolo in kg
-    StatoOperativoVeicolo stato; // Stato operativo del veicolo
-    dynamic_array carichi;      // Array dinamico dei carichi assegnati
+    char* targa;              
+    int capacita;             
+    StatoOperativoVeicolo stato; 
+    dynamic_array carichi;     
 };
 
 Veicolo veicolo_create(const char* _targa, int _capacita) {

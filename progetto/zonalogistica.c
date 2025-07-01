@@ -2,9 +2,9 @@
 #include "puntoconsegna.h"
 
 struct ZonaLogistica {
-    int id;                  // Identificativo della zona logistica
-    char* nome;              // Nome della zona logistica
-    dynamic_array punti_consegna;  // Array dinamico dei punti di consegna
+    int id;                 
+    char* nome;            
+    dynamic_array punti_consegna; 
 };
 
 ZonaLogistica zona_logistica_create(int _id, const char* _nome) {

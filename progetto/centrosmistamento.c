@@ -2,11 +2,11 @@
 #include <string.h>
 
 struct CentroSmistamento {
-    int id;                      // Identificativo del centro di smistamento
-    char* nome;                  // Nome del centro di smistamento
-    Node nodo;                   // Nodo del grafo associato al centro di smistamento
-    priority_queue carichi;      // Coda con priorità dei carichi disponibili
-    priority_queue veicoli;      // Coda dei veicoli in attesa
+    int id;                      
+    char* nome;                  
+    Node nodo;                 
+    priority_queue carichi;     
+    priority_queue veicoli;     
 };
 
 CentroSmistamento centro_smistamento_create(int _id, const char* _nome, Node _nodo) {

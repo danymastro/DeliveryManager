@@ -10,10 +10,10 @@
 #define GROWTH_FACTOR 2
 
 struct _dynamic_array {
-    void* data;          // Puntatore ai dati
-    int size;           // Dimensione logica (numero di elementi)
-    int capacity;       // Capacità fisica (spazio allocato)
-    size_t element_size; // Dimensione in byte di ciascun elemento
+    void* data;          
+    int size;           
+    int capacity;      
+    size_t element_size; 
 };
 
 dynamic_array dynamic_array_create(int _initial_capacity, size_t _element_size) {

@@ -2,13 +2,13 @@
 #include <string.h>
 
 struct PuntoConsegna {
-    int id;                  // Identificativo del punto di consegna
-    char* nome;              // Nome del punto di consegna
-    int priorita;            // Priorità del punto di consegna (1-5)
-    int orario;              // Orario di consegna (formato HHMM)
-    TipoPuntoConsegna tipo;  // Tipo del punto di consegna
-    Node nodo;               // Nodo del grafo associato al punto di consegna
-    void* zona_logistica;    // Zona logistica a cui appartiene il punto di consegna
+    int id;                  
+    char* nome;             
+    int priorita;            
+    int orario;             
+    TipoPuntoConsegna tipo;  
+    Node nodo;              
+    void* zona_logistica;   
 };
 
 PuntoConsegna punto_consegna_create(int _id, const char* _nome, int _priorita, 

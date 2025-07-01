@@ -3,13 +3,13 @@
 #include <string.h>
 
 struct Missione {
-    int id;                  // Identificativo della missione
-    Veicolo veicolo;         // Veicolo associato alla missione
-    StatoMissione stato;     // Stato della missione
-    dynamic_array carichi;   // Array dinamico dei carichi associati
-    time_t data_inizio;      // Data di inizio della missione
-    time_t data_fine;        // Data di fine della missione
-    char* nota;              // Nota testuale sulla missione
+    int id;                  
+    Veicolo veicolo;        
+    StatoMissione stato;    
+    dynamic_array carichi;  
+    time_t data_inizio;      
+    time_t data_fine;      
+    char* nota;            
 };
 
 Missione missione_create(int _id, Veicolo _veicolo) {
