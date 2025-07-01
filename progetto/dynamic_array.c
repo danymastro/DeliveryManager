@@ -67,7 +67,7 @@ static int _dynamic_array_ensure_capacity(dynamic_array _array) {
         }
         _array->data = new_data;
         _array->capacity = new_capacity;
-    }
+        }
     return DYN_ARRAY_SUCCESS;
 }
 

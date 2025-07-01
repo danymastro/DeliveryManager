@@ -88,10 +88,10 @@ int priority_queue_dequeue(priority_queue _queue, void** _element_out) {
     
     _queue->head = node_to_remove->next;
     free(node_to_remove);
-    
+
     _queue->size--;
     return QUEUE_SUCCESS;
-}
+    }
 
 int priority_queue_peek(priority_queue _queue, void** _element_out) {
     if (_queue == NULL || _element_out == NULL) return QUEUE_ERROR_NULL;

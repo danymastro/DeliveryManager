@@ -23,6 +23,27 @@ void clear_input_buffer() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+// Funzione per leggere un intero da input in modo sicuro
+int leggi_intero(const char* messaggio) {
+    char buffer[100];
+    int valore;
+    char* endptr;
+    while (1) {
+        printf("%s", messaggio);
+        if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+            printf("Errore di input. Riprova.\n");
+            continue;
+        }
+        valore = (int)strtol(buffer, &endptr, 10);
+        // Controlla che ci sia almeno una cifra e che non ci siano caratteri non numerici
+        if (endptr == buffer || (*endptr != '\n' && *endptr != '\0')) {
+            printf("Input non valido! Inserisci un numero intero.\n");
+            continue;
+        }
+        return valore;
+    }
+}
+
 // Funzione per visualizzare il menu principale
 void display_menu() {
   
@@ -64,9 +85,7 @@ void register_new_vehicle(DeliveryManager manager) {
     scanf("%s", targa);
     clear_input_buffer();
     
-    printf("Inserisci capacità massima (kg): ");
-    scanf("%d", &capacita);
-    clear_input_buffer();
+    capacita = leggi_intero("Inserisci capacità massima (kg): ");
     
     int result = createVeicolo(manager, targa, capacita);
     
@@ -138,13 +157,9 @@ void register_new_cargo(DeliveryManager manager) {
     
     printf("\n=== INSERIMENTO NUOVO CARICO ===\n");
     
-    printf("Inserisci peso del carico (kg): ");
-    scanf("%d", &peso);
-    clear_input_buffer();
+    peso = leggi_intero("Inserisci peso del carico (kg): ");
     
-    printf("Inserisci tipologia (1=Standard, 2=Refrigerato, 3=Fragile): ");
-    scanf("%d", &tipologia_int);
-    clear_input_buffer();
+    tipologia_int = leggi_intero("Inserisci tipologia (1=Standard, 2=Refrigerato, 3=Fragile): ");
     
     if (tipologia_int < 1 || tipologia_int > 3) {
         printf("Tipologia non valida. Utilizzo tipologia standard.\n");
@@ -157,9 +172,7 @@ void register_new_cargo(DeliveryManager manager) {
     fgets(punto_consegna, MAX_INPUT_SIZE, stdin);
     punto_consegna[strcspn(punto_consegna, "\n")] = '\0'; // Rimuove il newline
     
-    printf("Inserisci priorità (1-5, dove 5 è la più alta): ");
-    scanf("%d", &priorita);
-    clear_input_buffer();
+    priorita = leggi_intero("Inserisci priorità (1-5, dove 5 è la più alta): ");
     
     if (priorita < 1 || priorita > 5) {
         printf("Priorità non valida. Utilizzo priorità 1.\n");
@@ -276,13 +289,10 @@ void register_mission_outcome(DeliveryManager manager) {
     
     printf("\n=== REGISTRAZIONE ESITO MISSIONE ===\n");
     
-    printf("Inserisci ID della missione: ");
-    scanf("%d", &id_missione);
-    clear_input_buffer();
+    id_missione = leggi_intero("Inserisci ID della missione: ");
     
     printf("Inserisci stato (2=Completata, 3=Fallita): ");
-    scanf("%d", &stato_int);
-    clear_input_buffer();
+    stato_int = leggi_intero("");
     
     if (stato_int != 2 && stato_int != 3) {
         printf("Stato non valido. Utilizzo stato 'Completata'.\n");

@@ -15,14 +15,14 @@ typedef struct DeliveryManager* DeliveryManager;
  * Funzione per creare un nuovo gestore della rete logistica
  * @params nessun parametro
  * @return un puntatore al gestore della rete logistica
- */
+*/
 DeliveryManager createManager();
 
 /*
  * Funzione per distruggere il gestore della rete logistica
  * @params un puntatore che punta al gestore della rete logistica
  * @return nessun valore
- */
+*/
 void destroyManager(DeliveryManager* _manager);
 
 /*
@@ -32,7 +32,7 @@ void destroyManager(DeliveryManager* _manager);
  *         1 se la creazione non è avvenuta con successo
  *         2 se il nome della zona logistica è già presente
  *         3 se non è presente più spazio per la creazione della zona logistica
- */
+*/
 int createZonaLogistica(DeliveryManager manager, char* nome);
 
 /*
@@ -63,7 +63,7 @@ int createCentroSmistamento(DeliveryManager manager, char* nome);
  *         1 se la creazione non è avvenuta con successo
  *         2 se la targa del veicolo è già presente
  *         3 se non è presente più spazio per la creazione del veicolo
- */
+*/
 int createVeicolo(DeliveryManager manager, char* targa, int capacita);
 
 /*
@@ -74,7 +74,7 @@ int createVeicolo(DeliveryManager manager, char* targa, int capacita);
  *         2 se il punto di consegna non esiste
  *         3 se il centro di smistamento non esiste
  *         4 se lo spazio disponibile non è sufficiente
- */
+*/
 int insertCarico(DeliveryManager manager, int peso, TipoCarico tipologia, char* punto_consegna, int priorita, char* centro_smistamento);
 
 /*
@@ -95,14 +95,14 @@ int addVeicoloToCoda(DeliveryManager manager, char* targa, char* centro_smistame
  *         1 se l'aggiunta non è avvenuta con successo
  *         2 se il veicolo non è valido
  *         3 se il carico non è valido
- */
+*/
 int addTask(DeliveryManager manager, Veicolo veicolo, Carico carico);
 
 /*
  * Funzione per assegnare una missione ad un veicolo automaticamente
  * @params un puntatore al gestore della rete logistica, il nome del centro di smistamento
  * @return puntatore alla missione creata, oppure NULL in caso di errore
- */
+*/
 Missione addAutoTask(DeliveryManager manager, char* centro_smistamento);
 
 /*
@@ -118,7 +118,7 @@ int registraEsitoMissione(DeliveryManager manager, int id_missione, StatoMission
  * Funzione per ottenere le statistiche della rete logistica
  * @params un puntatore al gestore della rete logistica
  * @return nessun valore (le statistiche vengono stampate a video)
- */
+*/
 void getStatistics(DeliveryManager manager);
 
 /*
